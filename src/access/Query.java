@@ -17,7 +17,7 @@ public class Query {
         this.stmt = con.createStatement();
     }
 
-    public void find() {
+    public void selectAll() {
         ResultSet rs;
         Scanner scanner = new Scanner(System.in);
         String tName;
@@ -27,14 +27,12 @@ public class Query {
         try {
             System.out.print("검색 테이블 >> ");
             tName = scanner.nextLine();
-            System.out.print("검색 열 >> ");
-            columns = scanner.nextLine();
             System.out.print("조건 >> ");
             condition = scanner.nextLine();
 
             System.out.println("Finding...");
 
-            if (columns.isEmpty()) columns = "*";
+            columns = "*";
 
             if (condition.isEmpty())
                 rs=stmt.executeQuery("SELECT " + columns + " FROM " + tName);
@@ -109,7 +107,7 @@ public class Query {
                     }
                     break;
             }
-        } catch (Exception e) { System.out.println("Error..."); }
+        } catch (Exception e) { System.out.println(e); }
     }
 
     public void desc() {
@@ -144,7 +142,7 @@ public class Query {
             String SQL;
             PreparedStatement pstmt = null;
 
-            System.out.print("Inserting...");
+            System.out.println("Inserting...");
             switch (tName) {
                 case "EMPLOYEE":
                     SQL = "INSERT INTO " + tName + " VALUE(?,?,?,?,?,?)";
@@ -232,6 +230,25 @@ public class Query {
     }
 
     public void delete() {
+        Scanner scanner = new Scanner(System.in);
+        String tName = null;
+        String condition = null;
+        String SQL = null;
+        PreparedStatement pstmt = null;
 
+        try {
+            System.out.print("테이블 입력>> ");
+            tName = scanner.nextLine();
+            System.out.print("조건 입력:");
+            condition = scanner.nextLine();
+
+            System.out.println("Delete...");
+            SQL = "DELETE FROM " + tName + " WHERE " + condition;
+
+            pstmt = con.prepareStatement(SQL);
+            pstmt.executeUpdate();
+
+
+        } catch (Exception e) { System.out.println(e); }
     }
 }

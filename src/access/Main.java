@@ -12,7 +12,7 @@ public class Main {
 
         do {
             System.out.println("Marine Transport ===========");
-            System.out.println("1. find           2. desc");
+            System.out.println("1. select all     2. desc");
             System.out.println("3. insert         4. delete");
             System.out.println("                  99. 종료");
             System.out.println("============================");
@@ -27,7 +27,7 @@ public class Main {
 
             switch (command) {
                 case 1:
-                    query.find();
+                    query.selectAll();
                     break;
                 case 2:
                     query.desc();
