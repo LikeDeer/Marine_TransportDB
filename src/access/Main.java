@@ -14,8 +14,7 @@ public class Main {
             System.out.println("Marine Transport ===========");
             System.out.println("1. find           2. desc");
             System.out.println("3. insert         4. delete");
-            System.out.println("5. update         6. 직접 입력");
-            System.out.println("7. join           99. 종료");
+            System.out.println("                  99. 종료");
             System.out.println("============================");
             System.out.print("command >> ");
 
@@ -38,15 +37,6 @@ public class Main {
                     break;
                 case 4:
                     query.delete();
-                    break;
-                case 5:
-                    query.update();
-                    break;
-                case 6:
-                    query.custom();
-                    break;
-                case 7:
-                    query.join();
                     break;
                 case 99:
                     System.out.println("프로그램 종료...");
